@@ -1,10 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   const steps = Array.from(document.querySelectorAll(".step"));
-  let currentIndex = 0;
 
-  /* ==========================
-     Helpers
-  ========================== */
+  // Build section metadata for completion tracking
+  const sectionMeta = {};
+  steps.forEach((step, index) => {
+    const sec = step.dataset.section;
+    if (!sectionMeta[sec]) {
+      sectionMeta[sec] = { min: index, max: index };
+    } else {
+      sectionMeta[sec].max = index;
+    }
+  });
+
+  let currentIndex = 0;
+  let furthestIndex = 0;
+
   const formatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 
   function formatCurrency(value) {
@@ -28,6 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     target.classList.add("active");
 
     currentIndex = steps.indexOf(target);
+    furthestIndex = Math.max(furthestIndex, currentIndex);
+
     updateSidebar();
     updateProgress();
   }
@@ -38,10 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!next) return;
 
       if (next === "complete") {
-        // placeholder – Salesforce integration / redirect
+        // Placeholder: later hook into Salesforce + estimate
         window.location.href = "complete/index.html";
         return;
       }
+
       goToStep(next);
     });
   });
@@ -54,12 +67,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ==========================
-     Sidebar highlighting
+     Sidebar highlighting + completion
   ========================== */
   function updateSidebar() {
     const activeSection = steps[currentIndex].dataset.section;
     document.querySelectorAll(".section-pill").forEach((pill) => {
-      pill.classList.toggle("active", pill.dataset.section === activeSection);
+      const sec = pill.dataset.section;
+      const meta = sectionMeta[sec];
+
+      pill.classList.toggle("active", sec === activeSection);
+
+      // A section is "complete" if all of its steps are at or before furthestIndex
+      const isComplete =
+        meta && meta.max <= furthestIndex && sec !== activeSection;
+      pill.classList.toggle("complete", isComplete);
     });
   }
 
@@ -79,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   updateProgress();
+  updateSidebar();
 
   /* ==========================
      Prefill Loan Amount from ?amount=
