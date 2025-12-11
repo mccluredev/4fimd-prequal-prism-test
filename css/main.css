@@ -1,1 +1,308 @@
+/* ============================
+   Base
+============================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #faf8f2;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #222f4f;
+}
+
+/* Layout */
+#prequal-app {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 100vh;
+}
+
+/* ============================
+   Sidebar
+============================ */
+#sidebar {
+  background: #f4f0e8;
+  border-right: 1px solid #ded9cf;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+#section-nav {
+  margin-bottom: 24px;
+}
+
+.section-item {
+  padding: 12px 12px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border: 1px solid #d2cdc2;
+  font-size: 14px;
+  font-weight: 600;
+  background: #f9f7f2;
+}
+
+.section-item.active {
+  border-color: #222f4f;
+  background: #e9eef7;
+}
+
+/* Summary */
+#application-summary h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.summary-field {
+  margin-bottom: 12px;
+}
+
+.summary-field label {
+  display: block;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.summary-field div {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Progress dial */
+#progress-dial-wrapper {
+  margin-top: auto;
+  text-align: center;
+}
+
+#progress-dial {
+  width: 120px;
+  height: 120px;
+  transform: rotate(-90deg);
+}
+
+.dial-bg {
+  fill: none;
+  stroke: #ddd;
+  stroke-width: 10;
+}
+
+.dial-progress {
+  fill: none;
+  stroke: #7ae3d2;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 339;
+  stroke-dashoffset: 339;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+#progress-label {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ============================
+   Form Panel
+============================ */
+#form-panel {
+  padding: 40px 56px;
+  overflow-y: auto;
+}
+
+.step {
+  display: none;
+  max-width: 720px;
+}
+
+.step.active {
+  display: block;
+}
+
+.step h1 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+.step-intro {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #555;
+}
+
+/* Inputs */
+.input-block {
+  margin-bottom: 24px;
+}
+
+.input-block label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d3d2cb;
+  font-size: 16px;
+  background: #fff;
+}
+
+/* Currency */
+.currency-input {
+  position: relative;
+}
+
+.currency-prefix {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  color: #777;
+}
+
+.currency-input input {
+  padding-left: 26px;
+}
+
+/* Radio / Checkbox styles */
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-option,
+.checkbox-option {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #dad7cf;
+  background: #fff;
+}
+
+.radio-option input,
+.checkbox-option input {
+  margin-top: 4px;
+}
+
+/* Sliders */
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slider-value {
+  min-width: 90px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+input[type="range"] {
+  flex: 1;
+  height: 6px;
+  background: #ddd;
+  border-radius: 999px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #7ae3d2;
+  border: 2px solid #222f4f;
+  cursor: pointer;
+}
+
+.slider-range-label {
+  font-size: 13px;
+  margin-top: 4px;
+  color: #555;
+}
+
+/* Two-column grid */
+.input-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.input-grid.two-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Buttons */
+.step-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #7ae3d2;
+  color: #222f4f;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #222f4f;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #222f4f;
+  border: 1px solid #c7c4ba;
+}
+
+.btn-secondary:hover {
+  background: #e3dfd5;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  #prequal-app {
+    grid-template-columns: 1fr;
+  }
+
+  #sidebar {
+    border-bottom: 1px solid #ddd;
+    border-right: none;
+    flex-direction: column;
+  }
+
+  #form-panel {
+    padding: 20px;
+  }
+
+  .input-grid.two-col {
+    grid-template-columns: 1fr;
+  }
+}
 
