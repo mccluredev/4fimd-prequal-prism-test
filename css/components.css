@@ -247,29 +247,27 @@ input[type="range"]::-moz-range-thumb {
 #progress-dial {
   width: 180px;
   height: 180px;
-  transform: rotate(-90deg);
+  overflow: visible;
 }
 
 .dial-bg {
   fill: none;
   stroke: #e6e6e6;
   stroke-width: 14px;
+  stroke-linecap: round;
 }
 
 .dial-progress {
   fill: none;
-  stroke: var(--color-brand-teal); /* #2FCAB2 */
+  stroke: var(--color-brand-teal);
   stroke-width: 14px;
   stroke-linecap: round;
-  stroke-dasharray: 339;
-  stroke-dashoffset: 339;
-  transition: stroke-dashoffset 0.5s ease-out;
+  stroke-dasharray: 157;
+  stroke-dashoffset: 157;
+
+  transform: rotate(180deg);
+  transform-origin: center;
+
+  transition: stroke-dashoffset 0.6s ease-out;
 }
 
-.dial-percent {
-  margin-top: 8px;
-  font-size: 40px;
-  font-weight: var(--font-weight-medium);
-  font-family: var(--font-family-main);
-  color: var(--color-brand-teal);
-}
