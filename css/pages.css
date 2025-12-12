@@ -1,41 +1,43 @@
 @import "tokens.css";
 
-/* ============================
-   Step / page-level layout
-============================ */
+/* =========================================================
+   STEP / PAGE-LEVEL LAYOUT (RIGHT PANEL)
+========================================================= */
 
 .step {
   text-align: center;
 }
 
-/* Header + title */
+/* QUESTION / PROMPT */
 
 .step-header {
-  max-width: 760px;
-  margin: 0 auto 48px; /* spec margin-bottom 48px */
+  max-width: 760px;             /* spec */
+  margin: 0 auto 48px;          /* 48px to answers */
 }
 
 .step-title {
   margin: 0;
-  font-size: 48px;       /* spec */
-  line-height: 58px;     /* ~58px */
-  font-weight: 500;      /* medium */
-  color: var(--text-main);
+  font-family: var(--font-family-main);
+  font-weight: var(--font-weight-medium);
+  font-size: 48px;              /* spec */
+  line-height: 58px;            /* spec-ish */
+  color: var(--color-font-primary); /* #2D495A */
 }
 
 .step-subtitle {
   margin: 8px 0 0;
   font-size: 15px;
-  color: var(--text-muted);
+  color: var(--color-font-muted);
 }
 
-/* Accent word in headline */
+/* Accent word in headline (e.g., "purpose") */
 
 .accent-word {
-  color: var(--text-teal); /* #2FCAB2 */
+  color: var(--color-font-accent); /* #2FCAB2 */
 }
 
-/* Centering content blocks horizontally */
+/* Center-aligned content blocks horizontally */
+
 .input-block,
 .slider-block,
 .pill-grid,
@@ -45,18 +47,19 @@
   margin-right: auto;
 }
 
-/* Step actions (Back / Continue) */
+/* BUTTON ROW BELOW ANSWERS */
+
 .step-actions {
   display: flex;
   justify-content: center;
   gap: 16px;
-  margin-top: 0;      /* content above has its own spacing */
-  margin-bottom: 0;   /* so bottom aligns with dial via flex frame */
+  margin-top: 0;         /* vertical framing handled by flex in layout.css */
+  margin-bottom: 0;
 }
 
-/* Responsive tweaks */
+/* RESPONSIVE TWEAKS */
 
-@media (max-width: 980px) {
+@media (max-width: 900px) {
   .step-header {
     padding: 0 8px;
     margin-bottom: 32px;
@@ -68,7 +71,7 @@
   }
 
   .pill-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* collapse to 1 column on mobile */
   }
 
   .step-actions {
