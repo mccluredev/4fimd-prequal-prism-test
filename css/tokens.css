@@ -2,24 +2,28 @@
   /* Backgrounds */
   --bg-main: #faf8f2;
   --bg-sidebar: #faf8f2;
-  --bg-pill: #222f4f;
+  --bg-pill: #2d495a; /* Dark pill buttons */
   --bg-pill-selected: #faf8f2;
   --bg-pill-light: #ffffff;
-  --bg-pill-complete: #f3f3f3;
+  --bg-pill-complete: #fafafa;
 
   /* Borders */
-  --border-pill: #d1cec5;
-  --border-pill-active: #49433a;
-  --border-pill-selected: #7ae3d2;
+  --border-pill: #ebebeb;             /* Default sidebar section border */
+  --border-pill-active: #747474;       /* When section is in progress */
+  --border-pill-selected: #2fcab2;     /* Completed section border */
 
   /* Text */
-  --text-main: #222f4f;
-  --text-muted: #8a8a8a;
+  --text-main: #2d495a;
+  --text-muted: #747474;               /* Sidebar summary labels */
   --text-light: #ffffff;
-  --text-teal: #7ae3d2;
+  --text-teal: #2fcab2;
 
-  /* Brand */
-  --teal: #7ae3d2;
+  /* Brand Colors */
+  --teal: #2fcab2;
+
+  /* Buttons */
+  --btn-primary-bg: #2fcab2;
+  --btn-secondary-border: #ebebeb;
 
   /* Typography */
   --font-main: "At Aero", system-ui, -apple-system, BlinkMacSystemFont,
@@ -43,4 +47,3 @@
   /* Transitions */
   --transition-fast: 0.18s ease-out;
 }
-
