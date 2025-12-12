@@ -105,102 +105,74 @@ select {
 }
 
 /* =========================================================
-   ANSWER OPTION GRID (Loan Purpose, etc.)
+   UNIVERSAL ANSWER OPTION BUTTON
+   (Used for Loan Purpose, Credit Score, Employment Type, etc.)
 ========================================================= */
 
-/* 2-column grid, fixed-width columns, centered under question */
-
-.pill-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 equal columns */
-  column-gap: 24px;  /* spec */
-  row-gap: 20px;     /* spec */
-  max-width: 760px;  /* spec */
-  margin: 0 auto 56px; /* centered + spacing before Continue button */
-}
-
-/* Answer option button (default state) */
-
 .pill-option {
-  display: inline-flex;
+  /* Fixed geometry — NEVER changes */
+  height: 56px;
+  min-width: 0;
+  border-radius: 28px;
+  padding: 0 28px;
+
+  /* Layout */
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 24px;
-  height: 56px;                        /* spec */
-  border-radius: var(--radius-large-pill); /* 28px */
-  background: var(--color-font-primary);   /* #2D495A */
-  border: none;
+
+  /* Typography */
   font-size: 16px;
-  font-weight: var(--font-weight-medium);
   font-family: var(--font-family-main);
-  color: #ffffff;
+  font-weight: var(--font-weight-medium);
   text-align: center;
+  white-space: nowrap;
+
+  /* Unselected default state */
+  background: var(--color-font-primary); /* #2D495A */
+  border: 2px solid transparent;
+  color: #ffffff;
+
   cursor: pointer;
   user-select: none;
-  transition: background var(--transition-fast),
-              color var(--transition-fast),
-              border-color var(--transition-fast),
-              box-shadow var(--transition-fast),
-              transform var(--transition-fast);
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .pill-option span {
+  display: block;
+  width: 100%;
   text-align: center;
 }
 
 .pill-option input {
-  display: none; /* we style via the label */
+  display: none;
 }
 
-/* Hover / active */
+/* =========================================================
+   HOVER — Preview selected state
+========================================================= */
 
 .pill-option:hover {
-  background: #34566b; /* slight lighten */
-}
-
-.pill-option:active {
-  background: #243747; /* slight darken */
-}
-
-/* Focus state (when input inside receives focus) */
-
-.pill-option:focus-within {
-  outline: 2px solid var(--color-brand-teal); /* #2FCAB2 */
-  outline-offset: 2px;
-}
-
-/* Selected state (radio checked) */
-
-.pill-option:has(input:checked) {
-  background: var(--color-bg-main);       /* #FAF8F2 */
-  color: var(--color-font-primary);       /* #2D495A */
-  border: 2px solid var(--color-brand-teal); /* #2FCAB2 */
-  box-shadow: var(--shadow-soft);
+  background: var(--color-bg-main);   /* #FAF8F2 */
+  color: var(--color-font-primary);   /* #2D495A */
+  border-color: var(--color-brand-teal); /* #2FCAB2 */
   transform: translateY(-1px);
 }
 
 /* =========================================================
-   LIGHTER PILL VARIANT (Consent box, etc.)
+   SELECTED
 ========================================================= */
 
-.pill-option--light {
-  background: #ffffff;
-  border: 1px solid var(--color-border-default);
-  color: var(--color-font-primary);
-  justify-content: flex-start;
-  height: auto;
-  min-height: 56px;
-}
+.pill-option:has(input:checked) {
+  background: var(--color-bg-main);
+  co
 
-.pill-option--light input {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-}
-
-.pill-option--light span {
-  text-align: left;
-}
 
 /* =========================================================
    SLIDERS (Income / Debt pages)
