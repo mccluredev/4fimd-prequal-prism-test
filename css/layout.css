@@ -37,28 +37,31 @@ body {
   gap: var(--space-md);
   height: 100%;
   padding: var(--space-lg) var(--space-md) var(--space-md);
-  justify-content: center; /* vertically center the sidebar stack */
+  justify-content: center; /* vertically center the whole stack */
 }
 
 .sidebar-title {
-  margin: 0;
+  margin: 0 0 var(--space-sm);
   font-size: 22px;
   font-weight: 600;
+  color: var(--text-main);
 }
 
-/* Section pill nav */
+/* Section pill nav (Loan Information, etc.) */
 
 #section-nav {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
 }
 
 .section-pill {
-  padding: 10px 16px;
+  width: 100%;
+  padding: 10px 18px;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--border-pill);
-  background: #fdfbf7;
+  border: 1px solid var(--border-pill); /* default #ebebeb */
+  background: #ffffff;
   font-size: 14px;
   text-align: left;
   color: var(--text-main);
@@ -68,19 +71,19 @@ body {
 }
 
 .section-pill.active {
-  border: 2px solid var(--border-pill-active);
+  border: 2px solid var(--border-pill-active); /* #747474 */
   background: transparent;
 }
 
 .section-pill.complete {
-  border: 2px solid var(--border-pill-selected);
-  background: var(--bg-pill-complete);
+  border: 2px solid var(--border-pill-selected); /* #2fcab2 */
+  background: var(--bg-pill-complete); /* #fafafa */
 }
 
 /* Summary block in sidebar */
 
 .summary {
-  margin-top: var(--space-sm);
+  margin-top: var(--space-md);
 }
 
 .summary-field {
@@ -90,27 +93,28 @@ body {
 .summary-label {
   display: block;
   font-size: 12px;
-  color: var(--text-muted);
+  color: var(--text-muted); /* #747474 */
 }
 
 .summary-value {
   display: block;
   font-size: 14px;
   font-weight: 600;
+  color: var(--text-main);
 }
 
 /* Progress dial layout */
 
 .dial-shell {
-  margin-top: var(--space-sm);
+  margin-top: var(--space-lg);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .dial-arc-wrapper {
-  width: 140px;
-  height: 70px;
+  width: 150px;
+  height: 75px;
   overflow: hidden;
 }
 
@@ -120,15 +124,15 @@ body {
   padding: 40px 64px;
   display: flex;
   justify-content: center;
-  align-items: center; /* vertically center questions */
+  align-items: center; /* vertically center the step block */
 }
 
 #prequal-form {
   width: 100%;
-  max-width: 720px;
+  max-width: 760px; /* slightly wider to echo mockup */
 }
 
-/* Shared grid helpers */
+/* Grid helper for two-column text inputs */
 
 .two-col {
   display: grid;
@@ -148,6 +152,11 @@ body {
     border-bottom: 1px solid #e4dfd7;
   }
 
+  .sidebar-inner {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
   #main-panel {
     padding: 24px 20px 40px;
   }
@@ -156,4 +165,3 @@ body {
     grid-template-columns: 1fr;
   }
 }
-
