@@ -1,34 +1,44 @@
 @import "tokens.css";
 
 /* ================================================
+   GLOBAL — Prevent page scroll
+================================================ */
+html, body {
+  height: 100%;
+  overflow: hidden; /* prevents full-page scroll */
+}
+
+/* ================================================
    HIGH-LEVEL PAGE LAYOUT
 ================================================ */
 
 .layout {
   display: flex;
+  height: 100vh;
   width: 100%;
-  min-height: 100vh;
   background: var(--color-bg-main);
+  overflow: hidden;
 }
 
 /* ================================================
-   SIDEBAR — 30% WIDTH WITH LARGER PADDING
+   SIDEBAR (fixed height, scroll disabled)
 ================================================ */
 
 .sidebar {
   width: 30%;
   min-width: 320px;
-  background: var(--color-bg-main);
+  background: var(--color-bg-sidebar);
 
-  padding: 60px 48px 40px 48px;
+  padding: 60px 48px 40px;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   border-right: 1px solid rgba(0,0,0,0.05);
 
-  height: 100vh;        
-  overflow-y: auto;       
+  height: 100vh;  
+  overflow: hidden; /* no sidebar scrolling */
 }
 
 .sidebar-title {
@@ -40,7 +50,7 @@
 }
 
 /* ================================================
-   SIDEBAR PILL NAVIGATION
+   SIDEBAR NAV
 ================================================ */
 
 .sidebar-nav {
@@ -48,7 +58,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin-bottom: 90px;
+  margin-bottom: 60px;
 }
 
 .section-pill {
@@ -59,7 +69,6 @@
 
   font-family: var(--font-family-main);
   font-size: 16px;
-  font-weight: 400;
 
   display: flex;
   align-items: center;
@@ -69,58 +78,51 @@
   color: var(--color-font-muted);
 }
 
-/* ACTIVE */
 .section-pill.active {
-  border: 2px solid var(--color-font-muted);
+  border: 2px solid var(--color-border-active);
   color: var(--color-font-muted);
   font-weight: 500;
 }
 
-/* COMPLETED */
 .section-pill.completed {
   background: var(--color-bg-completed);
   border: 2px solid var(--color-brand-teal);
-  color: var(--color-font-muted);
 }
 
 /* ================================================
-   PROGRESS DIAL + LABEL
+   PROGRESS DIAL
 ================================================ */
 
 .sidebar-progress {
   position: relative;
-  width: 180px;         /* fixed frame so dial doesn’t stretch */
+  width: 180px;
   height: 140px;
-  margin-top: auto;     /* stays at bottom of sidebar */
-  padding-top: 20px;
+  margin-top: auto;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* % TEXT: centered inside the semicircle */
 .dial-percent {
   position: absolute;
-  top: 58%;             /* perfect vertical optical center inside arc */
+  top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  margin: 0;
+
   font-size: 40px;
   font-weight: var(--font-weight-medium);
-  font-family: var(--font-family-main);
   color: var(--color-brand-teal);
-  pointer-events: none;
 }
 
 /* ================================================
-   RIGHT SIDE CONTENT — 70% WIDTH
+   RIGHT CONTENT AREA (scrolls)
 ================================================ */
 
 .content-area {
   width: 70%;
-  flex-grow: 1; /* FIX: ensures it expands beside sidebar */
+  height: 100vh;
+  overflow-y: auto; /* the RIGHT PANE scrolls, not the page */
 
   padding: 80px;
 
@@ -129,16 +131,15 @@
   align-items: center;
 }
 
-/* QUESTION + ANSWERS FRAME */
 .step {
   width: 100%;
-  max-width: 760px; /* FIX: matches mockup, prevents overflow */
+  max-width: 760px;
+  display: none;
   text-align: center;
-  display: none;       /* FIX: hide by default */
 }
 
 .step.active {
-  display: block;      /* FIX: show only current step */
+  display: block;
 }
 
 .step-header {
@@ -150,22 +151,31 @@
 }
 
 /* ================================================
-   RESPONSIVE ADJUSTMENTS
+   RESPONSIVE
 ================================================ */
 
 @media (max-width: 1000px) {
+
+  html, body {
+    overflow: auto;
+  }
+
   .layout {
     flex-direction: column;
+    height: auto;
   }
 
   .sidebar {
     width: 100%;
-    padding-left: 32px;
-    padding-right: 32px;
+    height: auto;
+    overflow: visible;
+    padding: 40px 32px;
   }
 
   .content-area {
     width: 100%;
-    padding: 60px 24px;
+    height: auto;
+    overflow: visible;
+    padding: 40px 24px;
   }
 }
