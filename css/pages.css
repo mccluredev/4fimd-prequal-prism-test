@@ -1,1 +1,78 @@
+@import "tokens.css";
+
+/* ============================
+   Step / page-level layout
+============================ */
+
+.step {
+  display: none;
+  text-align: center;
+}
+
+.step.active {
+  display: block;
+}
+
+/* Step header / title */
+
+.step-header {
+  margin-bottom: 32px;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.step-title {
+  margin: 0 0 10px;
+  font-size: 34px;
+  line-height: 1.25;
+}
+
+.step-subtitle {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* Accent word in titles */
+
+.accent-word {
+  color: var(--text-teal);
+}
+
+/* center-aligned content blocks so question/answers/buttons stay aligned */
+
+.input-block,
+.slider-block,
+.pill-grid,
+.step-actions {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Step actions (Back / Continue buttons) */
+
+.step-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* Responsive page tweaks */
+
+@media (max-width: 980px) {
+  .step-header {
+    padding: 0 8px;
+  }
+
+  .step-title {
+    font-size: 28px;
+  }
+
+  .pill-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
