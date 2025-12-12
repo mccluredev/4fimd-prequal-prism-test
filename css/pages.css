@@ -16,16 +16,17 @@
 /* Step header / title */
 
 .step-header {
-  margin-bottom: 32px;
-  max-width: 620px;
+  margin-bottom: 36px;
+  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .step-title {
   margin: 0 0 10px;
-  font-size: 34px;
+  font-size: 38px;          /* larger, matches hero-style question */
   line-height: 1.25;
+  color: var(--text-main);
 }
 
 .step-subtitle {
@@ -34,19 +35,20 @@
   color: var(--text-muted);
 }
 
-/* Accent word in titles */
+/* Accent word / question highlight */
 
 .accent-word {
-  color: var(--text-teal);
+  color: var(--text-teal);  /* #2fcab2 */
 }
 
-/* center-aligned content blocks so question/answers/buttons stay aligned */
+/* Center-aligned content blocks so question/answers/buttons
+   sit in the same horizontal band on every page */
 
 .input-block,
 .slider-block,
 .pill-grid,
 .step-actions {
-  max-width: 520px;
+  max-width: 540px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -56,11 +58,15 @@
 .step-actions {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 32px;
+  gap: 14px;
+  margin-top: 12px;      /* small gap from pills/slider */
 }
 
-/* Responsive page tweaks */
+/* For the first "Loan Amount" step, we want slightly more air
+   between the input and the button, so we can override in HTML
+   later if needed with an extra utility class. */
+
+/* Responsive tweaks */
 
 @media (max-width: 980px) {
   .step-header {
@@ -68,11 +74,10 @@
   }
 
   .step-title {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .pill-grid {
     grid-template-columns: 1fr;
   }
 }
-
